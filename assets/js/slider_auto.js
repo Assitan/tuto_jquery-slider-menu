@@ -2,12 +2,11 @@ $(function() {
 
 	var slider      = $('#slider ul'),
 	  	slide       = slider.children('li'),
-		slide_width = slider.children('li').width(),
+		slide_width = slide.width(),
 		btn_left    = $('#navigation').find('#left'),
 		btn_right   = $('#navigation').find('#right'),
 		compteur    = 0,
-		i           = 0,
-		indice      = null;
+		i           = 0;
 
 	/*
 	** MENU 
@@ -27,7 +26,7 @@ $(function() {
 
 		$('#dots ul li').click(function(){
 			$('#dots ul li').removeClass('nav-active');	//empeche l'ajout du fond noir sur tous les dots		
-			indice = $(this).index();
+			var indice = $(this).index();
 			$(this).addClass('nav-active');
 			slider.animate({marginLeft : slide_width * (-indice)});//l'animation de l'image se fait de la droite vers la gauche
 																	//et on récupère grâce à l'indice la bonne position de l'image
@@ -40,14 +39,14 @@ $(function() {
 		 	compteur++;
 			slider.animate({
 				marginLeft : slide_width * (-compteur)
-			},'slow','easeInOutCirc');
+			},'slow');
 		}
 
 		$('#dots li').removeClass('nav-active');
 		$('#dots li:eq('+ compteur + ')').addClass('nav-active');
 
 		if(compteur === slide.length -1){
-		 	compteur = -1;	//compteur revient à 0, si on le mets à 0, le compteur est 1
+		 	compteur = -1;	//afin que le compteur revienne à zéro
 		}
 
 	},2000);

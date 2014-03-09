@@ -2,12 +2,11 @@ $(function() {
 
 	var slider      = $('#slider ul'),
 	  	slide       = slider.children('li'),
-		slide_width = slider.children('li').width(),
+		slide_width = slide.width(),
 		btn_left    = $('#navigation').find('#left'),
 		btn_right   = $('#navigation').find('#right'),
 		compteur    = 0,
-		i           = 0,
-		indice      = null;
+		i           = 0;
 
 	/*
 	** MENU 
@@ -26,11 +25,11 @@ $(function() {
 		$('#dots ul li').eq(currentDot).addClass('nav-active');
 
 		$('#dots ul li').click(function(){
-			$('#dots ul li').removeClass('nav-active');	//empeche l'ajout du fond noir sur tous les dots		
-			indice = $(this).index();
+			$('#dots ul li').removeClass('nav-active');	//empêche l'ajout du fond noir sur tous les dots		
+			var indice = $(this).index();
 			$(this).addClass('nav-active');
 			slider.animate({marginLeft : slide_width * (-indice)});//l'animation de l'image se fait de la droite vers la gauche
-																	//et on récupère grâce à l'indice la bonne position de l'image
+			//et on récupère grâce à l'indice la bonne position de l'image
 		});
 	}
 
